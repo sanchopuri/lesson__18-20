@@ -1,0 +1,181 @@
+//====================================================================================================
+
+.header { 
+	background-color:  #ffbfbd;
+
+	// .header__container 
+	&__container { 
+	min-height: rem(94); 
+	display: flex; 
+	align-items: center; 
+	justify-content: space-between; 
+	column-gap: rem(60); 
+	} 
+	
+	// .header__logo 
+	&__logo { 
+	} 
+	
+	// .header__menu 
+	
+	&__menu { 
+	display: flex; 
+	align-items: center; 
+	flex: 1 1 auto; 
+	} 
+	
+	// .header__button 
+	&__button { 
+	display: flex; 
+	gap: rem(36); 
+	} 
+} 
+.menu { 
+	
+	// .menu__icon 
+	
+	&__icon { 
+	} 
+	
+	// .menu__body 
+	
+	&__body { 
+	
+		@media (max-width: 767.98px){
+			position: fixed;
+			display: flex;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+			row-gap: 20px;
+			background-color: #fff;
+		}
+	} 
+
+	.menu-open &__body{
+		transition: left 0.3 ease 0s;
+		left: 0;		
+	}
+	
+	&__body .button{
+		max-width: 320px; 
+		align-self: center;
+	}
+
+	// .menu__list 
+	
+	&__list { 
+	display: flex; 
+	flex-wrap: wrap;
+	row-gap: rem(10);
+	column-gap:rem(40); 
+	@media (max-width: 767.98px ){
+		flex-direction: column;
+		row-gap: 20px;
+		align-items: center;
+		justify-content: center;
+		font-size: 25px;
+		padding-top: 100px;
+	}
+} 
+
+	
+	// .menu__item 
+	
+	&__item { 
+	} 
+	
+	// .menu__link 
+	
+	&__link { 
+		transition: all 0.3s ease 0s; 
+		@media (any-hover: hover) { 
+			&:hover { 
+			transition: all 0.3s ease 0s; 
+			color:  #FF3F3A ;
+			text-decoration: underline;
+			} 
+			} 
+	} 
+} 
+	
+.button-header { 
+	
+	// .button-header__btn 
+	&__btn { 
+	} 
+
+	.button--background{
+		transition: all 0.3s ease 0s; 
+		@media (any-hover: hover) { 
+			&:hover { 
+			transition: all 0.3s ease 0s; 
+			color:  #FF3F3A ;
+			text-decoration: underline;
+			} 
+			} 
+	}
+}
+
+//====================================================================================================
+
+//Burger
+
+
+.icon-menu {
+	
+	display: none;
+	@media (max-width: $mobile) {
+		
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+			
+		}
+		span,
+		&::before,
+		&::after {
+			
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
